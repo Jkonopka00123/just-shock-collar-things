@@ -13,7 +13,7 @@ from PIL import ImageGrab
 
 counter = 0
 game = ["derptiny 2", "overwat 2", "warm stone"]
-chosenGame = 0
+chosenGame = 2
 print("game chosen", game[chosenGame])
 #                           D2                   Overwat                Warmstone
 positionsForGrab = [[235, 79, 1000, 185], [3210, 45, 3400, 200], [1600, 990, 1860, 1300]]
@@ -55,8 +55,10 @@ while True:
         # and makes the the it reads more clean
         text = text.strip()
         if len(text) > 0:
-            totalHealthArmour = sum(re.findall(r'\d+', text))
-            startingHealth = 1
+            numbers = re.findall(r'\d+', text)
+            if numbers:  # Check if there are any numbers found
+                totalHealthArmour = sum(int(num) for num in numbers)
+                startingHealth = 1
 
     cap = ImageGrab.grab(bbox=(p1, p2, p3, p4))
 
@@ -77,13 +79,17 @@ while True:
     # This just removes spaces from the beginning and ends of text
     # and makes the the it reads more clean
     text = text.strip()
+    print("totalHealthArmour:",totalHealthArmour)
 
     # If any text was translated from the image, print it
 
     # if len(text) > 0 and text.lower() == chosenDeath:
-    if len(text) > 0 and chosenDeath in text.lower() or len(text) > 0 and totalHealthArmour < sum(re.findall(r'\d+', text)):
-        # print(text)
-        print("you died haha")
+    
+    if len(text) > 0 and (chosenDeath in text.lower() or len(text) > 0 and totalHealthArmour > sum(int(num) for num in re.findall(r'\d+', text))):
+        # if chosenGame == 2:
+        #     totalHealthArmour = sum(int(num) for num in re.findall(r'\d+', text))
+        #     print("new totalHealthArmour =", totalHealthArmour)
+        print(text)
         print(counter)
         counter += 1
         # time.sleep(10)
