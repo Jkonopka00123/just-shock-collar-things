@@ -1,5 +1,6 @@
 # OCR Screen Scanner
 # By Dornu Inene
+# edited Jakub Konopka
 # Libraries that you show have all installed
 import cv2
 import numpy as np
