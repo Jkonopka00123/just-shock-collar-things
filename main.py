@@ -23,7 +23,7 @@ def hearthstoneDamageTaken(startingHealth, recognisedHealth):
 counter = 0
 #           0              1            2                   3
 game = ["derptiny 2", "overwat 2", "warm stone", "warm stone but laptop"]
-chosenGame = 0
+chosenGame = 3
 print("game chosen", game[chosenGame])
 #                           D2                   Overwat                Warmstone           Warmstone Mobile
 positionsForGrab = [[235, 79, 1000, 185], [3210, 45, 3400, 200], [1600, 990, 1860, 1300],[850, 800, 1070, 1030]]
@@ -37,23 +37,13 @@ chosenDeath = deathIdentifier[chosenGame]
 totalHealthArmour = 30
 
 if chosenGame == 2 or chosenGame == 3:
-    while True:
-            cap = ImageGrab.grab(bbox=(p1, p2, p3, p4))
-            cap_arr = np.array(cap)
-            cv2.imshow("", cap_arr)
-            text = pytesseract.image_to_string(cap)
-            text = text.strip()
-            if len(text) > 0:
-                numbers = re.findall(r'\d+', text)
-                if numbers:  # Check if there are any numbers found
-                    totalHealthArmour = sum(int(num) for num in numbers)
-                    startingHealth = 1
-                    break
+    totalHealthArmour = 30
 
 print("totalHealthArmour:",totalHealthArmour)
 
 # Run forever unless you press Esc
 while True:
+    print("running main while")
     
     # This instance will generate an image from
     # the point of (115, 143) and (569, 283) in format of (x, y)
