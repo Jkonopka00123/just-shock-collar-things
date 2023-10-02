@@ -19,11 +19,11 @@ from PIL import ImageGrab
 
 
 # TODO API TESTING STUFF
-# duration = 2
-# url = "https://do.pishock.com/api/apioperate/"
-# temp = {"Username": "puppy73", "Name": "TG_Bot_Script", "Code": "17519CD8GAP", "Intensity": "6", "Duration": duration, "Apikey": "5c678926-d19e-4f86-42ad-21f5a76126db", "Op": "0"}
-# r = requests.post(url, json=temp)
-# print(r)
+duration = 2
+url = "https://do.pishock.com/api/apioperate/"
+temp = {"Username": "puppy73", "Name": "TG_Bot_Script", "Code": "17519CD8GAP", "Intensity": "6", "Duration": duration, "Apikey": "5c678926-d19e-4f86-42ad-21f5a76126db", "Op": "0"}
+r = requests.post(url, json=temp)
+print(r)
 
 
 # Hearthstone code just doesnt work, need more logic for hearthstone or perhaps api access to it
