@@ -18,12 +18,12 @@ API_KEY= "5c678926-d19e-4f86-42ad-21f5a76126db"
 
 intensity = "6"     # 1-100 strength of shock
 duration = "1"      # 1-15 length in seconds
-operator = "0"      # decides which action is taken
+operator = "2"      # decides which action is taken
                     # 0 - shock
                     # 1 - vibrate
                     # 2 - beep // BEEP DOES NOT HAVE INTENSITY
-# temp_json = {"Username": USERNAME, "Name": NAME, "Code": CODE, "Intensity": intensity, "Duration": duration, "Apikey": API_KEY, "Op": operator}
-temp_json = {"Username": USERNAME, "Name": NAME, "Code": CODE, "Apikey": API_KEY}
+temp_json = {"Username": USERNAME, "Name": NAME, "Code": CODE, "Intensity": intensity, "Duration": duration, "Apikey": API_KEY, "Op": operator}
+# temp_json = {"Username": USERNAME, "Name": NAME, "Code": CODE, "Apikey": API_KEY}
 r = requests.post(url, json=temp_json)
 print(r)
 
