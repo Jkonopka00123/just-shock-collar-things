@@ -19,10 +19,22 @@ from PIL import ImageGrab
 
 
 # TODO API TESTING STUFF
-duration = 2
-url = "https://do.pishock.com/api/apioperate/"
-temp = {"Username": "puppy73", "Name": "TG_Bot_Script", "Code": "17519CD8GAP", "Intensity": "6", "Duration": duration, "Apikey": "5c678926-d19e-4f86-42ad-21f5a76126db", "Op": "0"}
-r = requests.post(url, json=temp)
+
+# API constants and variables
+USERNAME = "puppy73"
+NAME = "TG_Bot_Script"
+CODE = "17519CD8GAP"
+API_KEY= "5c678926-d19e-4f86-42ad-21f5a76126db"
+
+intensity = "6"     # 1-100 strength of shock/vibration
+duration = "1"      # 1-15 length in seconds
+operator = "0"      # decides which action is taken
+                    # 0 - shock
+                    # 1 - vibrate
+                    # 2 - beep // BEEP DOES NOT HAVE INTENSITY
+temp_json = {"Username": USERNAME, "Name": NAME, "Code": CODE, "Intensity": intensity, "Duration": duration, "Apikey": API_KEY, "Op": operator}
+# temp_json = {"Username": USERNAME, "Name": NAME, "Code": CODE, "Apikey": API_KEY}
+r = requests.post(url, json=temp_json)
 print(r)
 
 
@@ -35,7 +47,7 @@ def hearthstoneDamageTaken(startingHealth, recognisedHealth):
     return startingHealth
 
 
-counter = 0
+shock_counter = 0
 #           0              1            2                   3
 game = ["derptiny 2", "overwat 2", "warm stone", "warm stone but laptop"]
 chosenGame = 2
@@ -91,10 +103,17 @@ while True:
             totalHealthArmour = hearthstoneDamageTaken(totalHealthArmour, sum(int(num) for num in re.findall(r'\d+', text)))
             print("new totalHealthArmour =", totalHealthArmour)
         else:
-            print(text)
-            print(counter)
-            counter += 1
-            # time.sleep(10)
+            if(chosenDeath in text.lower()):
+                print("YOU DIED LOL")
+                shock_counter += 1
+                intensity = shock_counter * 10
+                if intensity > 100:
+                    intensity = 100
+        
+        print(text)
+        print(shock_counter)
+        
+        # time.sleep(10)
 
     # This line will break the while loop when you press Esc
     if cv2.waitKey(1) == 27:
