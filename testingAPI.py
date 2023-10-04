@@ -29,33 +29,3 @@ print(r)
 
 
 
-
-# page = ''
-# while page == '':
-#     try:
-#         page = requests.get(url)
-#         break
-#     except:
-#         print("Connection refused by the server..")
-#         print("Let me sleep for 5 seconds")
-#         print("ZZzzzz...")
-#         time.sleep(5)
-#         print("Was a nice sleep, now let me continue...")
-#         continue
-
-# session = requests.Session()
-# retry = Retry(connect=3, backoff_factor=0.5)
-# adapter = HTTPAdapter(max_retries=retry)
-# session.mount('http://', adapter)
-# session.mount('https://', adapter)
-
-# session.get(url)
-# response = requests.get(url)
-# print(response.status_code)
-#
-#
-# try:
-#     r = requests.get('https://api.open-notify.org/astros.json')
-#     r.raise_for_status()
-# except requests.exceptions.HTTPError as err:
-#     raise SystemExit(err)

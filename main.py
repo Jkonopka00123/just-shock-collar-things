@@ -14,12 +14,19 @@ from random import randint
 from PIL import ImageGrab
 
 # TODO
-#  API Call for shock,
-#  when hearhstone code works make it adapt to how much damage was taken if i die, etc.
-#  reformat code to make it easier to read
+#  API Call for shock, (pretty sure it works, just need to test it)
+#  When hearhstone code works make it adapt to how much damage was taken, if i die, etc.
+#  Reformat code to make it easier to read
+#  Add ui to be able to adjust/reset parameters and variables and be able to pause program
+#                   Would also allow for games to be swapped without restarting program
+#  Add button to ui that will allow wearer to be shocked by the press of it
+#  Stretch targets:
+#                   Allow for new games to be added from ui including location and test of death indicator
+#                   Make program into executable file
+#                   Add db (or some form of storage) access and storage to save settings/death identifiers etc.
 
 
-# TODO API TESTING STUFF
+
 
 # API constants and variables
 URL = "https://do.pishock.com/api/apioperate/"
@@ -143,7 +150,7 @@ while True:
                 else:
                     print(call_shock(BEEP, duration, intensity))
 
-                print("SLEEPY TIME")
+                print("SLEEPY TIME Zzz Zzz")
                 time.sleep(1)
                 # time.sleep(sleep_times[chosenGame])
 
