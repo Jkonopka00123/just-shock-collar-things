@@ -30,6 +30,8 @@ from PIL import ImageGrab
 
 # API constants and variables
 URL = "https://do.pishock.com/api/apioperate/"
+
+# TESTING DATA
 USERNAME = "puppy73"
 NAME = "TG_Bot_Script"
 CODE = "17519CD8GAP"
@@ -37,7 +39,7 @@ API_KEY = "5c678926-d19e-4f86-42ad-21f5a76126db"
 SHOCK = "0"
 VIBRATE = "1"
 BEEP = "2"
-BEEP_INSTEAD_OF_SHOCK = 100  # 0-100, if 0 always shocks else chance of beep instead of shock
+BEEP_INSTEAD_OF_SHOCK = 0  # 0-100, if 0 always shocks else chance of beep instead of shock
 
 
 # intensity = "6"  # 1-100 strength of shock/vibration
