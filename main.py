@@ -76,36 +76,38 @@ def capture_window(x1, x2, y1, y2):
 # print(call_shock(VIBRATE,1,1))
 
 # Main loop
-while True:
-    text = capture_window(x1, x2, y1, y2)
+def main_loop():
+    while True:
+        text = capture_window(x1, x2, y1, y2)
 
-    if len(text) > 0:
-        if chosen_game == 2 or chosen_game == 3:
-            total_health_armor = hearthstone_damage_taken(total_health_armor, sum(int(num) for num in re.findall(r'\d+', text)))
-            print("New totalHealthArmor =", total_health_armor)
-        else:
-            if chosen_death in text.lower():
-                print("YOU DIED LOL")
-                shock_counter += 1
-                intensity = shock_counter * 10
-                intensity = min(100, intensity)
-                duration = min(shock_counter, 15)
+        if len(text) > 0:
+            if chosen_game == 2 or chosen_game == 3:
+                total_health_armor = hearthstone_damage_taken(total_health_armor, sum(int(num) for num in re.findall(r'\d+', text)))
+                print("New totalHealthArmor =", total_health_armor)
+            else:
+                if chosen_death in text.lower():
+                    print("YOU DIED LOL")
+                    shock_counter += 1
+                    intensity = shock_counter * 10
+                    intensity = min(100, intensity)
+                    duration = min(shock_counter, 15)
 
-                print("DURATION:", duration)
-                print("INTENSITY:", intensity)
+                    print("DURATION:", duration)
+                    print("INTENSITY:", intensity)
 
-                if randint(1, 100) > BEEP_INSTEAD_OF_SHOCK:
-                    print(call_shock(SHOCK, duration, intensity))
-                else:
-                    print(call_shock(BEEP, 1, 1))
+                    if randint(1, 100) > BEEP_INSTEAD_OF_SHOCK:
+                        print(call_shock(SHOCK, duration, intensity))
+                    else:
+                        print(call_shock(BEEP, 1, 1))
 
-                print("SLEEPY TIME Zzz Zzz")
-                time.sleep(1)
+                    print("SLEEPY TIME Zzz Zzz")
+                    time.sleep(1)
 
-        print("SHOCK COUNTER:", shock_counter)
+            print("SHOCK COUNTER:", shock_counter)
 
-    if cv2.waitKey(1) == 27:  # Break the loop when Esc is pressed
-        break
+        if cv2.waitKey(1) == 27:  # Break the loop when Esc is pressed
+            break
+            cv2.destroyAllWindows()
+            
 
 # Close all OpenCV windows
-cv2.destroyAllWindows()

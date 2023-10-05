@@ -1,6 +1,6 @@
 import tkinter as tk
 import requests
-
+import main
 
 
 URL = "https://do.pishock.com/api/apioperate/"
@@ -25,7 +25,7 @@ def call_shock(operator, duration, intensity):
 
 shock_button = tk.Button(r, text='Shock', width=25, command= lambda: print(call_shock(SHOCK, 1, 90)))
 beep_button = tk.Button(r, text='beep', width=25, command= lambda: print(call_shock(BEEP, 1, 90)))
-vibrate_button = tk.Button(r, text='vibrate', width=25, command= lambda: print(call_shock(VIBRATE, 1, 90)))
+vibrate_button = tk.Button(r, text='vibrate', width=25, command= lambda: main.main_loop)
 shock_button.pack(side="bottom")
 beep_button.pack(side="top")
 vibrate_button.pack()
