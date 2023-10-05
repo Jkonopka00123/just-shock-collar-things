@@ -12,7 +12,7 @@ url = "https://do.pishock.com/api/apioperate/"
 
 # Constants
 USERNAME = "puppy73"
-NAME = "TG_Bot_Script"
+NAME = "just-shock-collar-things program"
 CODE = "17519CD8GAP"
 API_KEY= "5c678926-d19e-4f86-42ad-21f5a76126db"
 

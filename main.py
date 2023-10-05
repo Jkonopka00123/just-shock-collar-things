@@ -7,16 +7,28 @@ import requests
 from random import randint
 from PIL import ImageGrab
 
+# TODO
+#  When hearhstone code works make it adapt to how much damage was taken, if i die, etc.
+#  Reformat code to make it easier to read (KINDA DONE BY chatGPT)
+#  Add ui to be able to adjust/reset parameters and variables and be able to pause program
+#                   Would also allow for games to be swapped without restarting program
+#  Add button to ui that will allow wearer to be shocked by the press of it
+#  Stretch targets:
+#                   Allow for new games to be added from ui including location and test of death indicator
+#                   Make program into executable file
+#                   Add db (or some form of storage) access and storage to save settings/death identifiers etc.
+
 # Constants
 URL = "https://do.pishock.com/api/apioperate/"
 USERNAME = "puppy73"
-NAME = "TG_Bot_Script"
+NAME = "just-shock-collar-things"
 CODE = "17519CD8GAP"
 API_KEY = "5c678926-d19e-4f86-42ad-21f5a76126db"
 SHOCK = "0"
 VIBRATE = "1"
 BEEP = "2"
 BEEP_INSTEAD_OF_SHOCK = 0  # 0-100, if 0 always shocks else chance of beep instead of shock
+
 
 # Game-specific settings
 game_names = ["derptiny 2", "overwat 2", "warm stone", "warm stone but laptop"]
@@ -47,7 +59,10 @@ def hearthstone_damage_taken(starting_health, recognised_health):
     return starting_health
 
 def call_shock(operator, duration, intensity):
-    # Replace this with the actual API call
+    # json_value = {"Username": USERNAME, "Name": NAME, "Code": CODE, "Intensity": intensity,
+    #               "Duration": duration, "Apikey": API_KEY, "Op": operator}
+    # r = requests.post(URL, json=json_value)
+    # return r
     return "called call_shock"
 
 def capture_window(x1, x2, y1, y2):
@@ -56,6 +71,9 @@ def capture_window(x1, x2, y1, y2):
     cv2.imshow("", cap_arr)
     text = pytesseract.image_to_string(cap).strip()
     return text
+
+
+# print(call_shock(VIBRATE,1,1))
 
 # Main loop
 while True:
@@ -79,7 +97,7 @@ while True:
                 if randint(1, 100) > BEEP_INSTEAD_OF_SHOCK:
                     print(call_shock(SHOCK, duration, intensity))
                 else:
-                    print(call_shock(BEEP, duration, intensity))
+                    print(call_shock(BEEP, 1, 1))
 
                 print("SLEEPY TIME Zzz Zzz")
                 time.sleep(1)
