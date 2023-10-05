@@ -6,6 +6,7 @@ import re
 import requests
 from random import randint
 from PIL import ImageGrab
+import guiTests
 
 # TODO
 #  When hearhstone code works make it adapt to how much damage was taken, if i die, etc.
@@ -50,7 +51,7 @@ death_identifiers = ["guardian down", "mrbreadlegs", None, None]
 chosen_death = death_identifiers[chosen_game]
 total_health_armor = 30
 
-shock_counter = 0
+
 
 # Helper functions
 def hearthstone_damage_taken(starting_health, recognised_health):
@@ -75,8 +76,11 @@ def capture_window(x1, x2, y1, y2):
 
 # print(call_shock(VIBRATE,1,1))
 
+shock_counter = 0
+
 # Main loop
 def main_loop():
+    global shock_counter
     while True:
         text = capture_window(x1, x2, y1, y2)
 
@@ -106,8 +110,12 @@ def main_loop():
             print("SHOCK COUNTER:", shock_counter)
 
         if cv2.waitKey(1) == 27:  # Break the loop when Esc is pressed
-            break
             cv2.destroyAllWindows()
-            
+            # guiTests.main_func()
+            break
+
+if __name__ == "__main__":
+    main_loop()
+  
 
 # Close all OpenCV windows
